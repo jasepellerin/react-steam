@@ -22,6 +22,8 @@
   "homepage": "https://github.com/jasepellerin/beatrice#readme",
   "dependencies": {
     "autoprefixer": "^7.1.2",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^2.0.0-beta.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   },
