@@ -1,28 +1,23 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
-  entry: './source/scripts/index.js',
+  entry: './source/scripts/index.jsx',
   output: {
     path: path.resolve(__dirname, 'temp/scripts'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.vue$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
-        loader: 'vue-loader!eslint-loader',
+        loader: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader', 'eslint-loader'],
-      },
-    ],
-  },
-  resolve: {
-    alias: {
-      vue: 'vue/dist/vue.esm.js',
-    },
-  },
-};
+        loaders: ['babel-loader', 'eslint-loader']
+      }
+    ]
+  }
+}
