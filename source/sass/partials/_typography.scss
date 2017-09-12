@@ -1,0 +1,83 @@
+html {
+  font-size: .8rem;
+  @include for-size(medium-up) {
+    font-size: 1rem;
+  }
+}
+
+body * {
+  font-family: $default-font-family;
+}
+
+code {
+  font-family: $code-font-family;
+}
+
+p,
+code,
+li {
+  color: $font-color;
+}
+
+a {
+  color: $highlight-color;
+  text-decoration: none;
+  font-weight: bolder;
+  &:hover {
+    color: $active-color;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $title-font-family;
+  color: $font-color;
+  margin: $small-spacing 0;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: .75rem;
+}
+
+.page-title {
+  font-size: 8rem;
+  @include for-size(medium-up) {
+    font-size: 10rem;
+  }
+  @include for-size(larger-up) {
+    font-size: 12rem;
+  }
+  text-shadow: .2rem .2rem 0 darken($highlight-color, 20%);
+}
+
+.highlight {
+  color: $highlight-color;
+}
+
+.subtitle {
+  font-size: 2rem;
+}

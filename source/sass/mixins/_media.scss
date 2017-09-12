@@ -1,0 +1,43 @@
+// Sets breakpoints based on device size
+@mixin for-size($size) {
+  @if $size==small-up {
+    @media (min-width: 600px) {
+      @content;
+    }
+  }
+  @else if $size==small-down {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+  @else if $size==medium-up {
+    @media (min-width: 900px) {
+      @content;
+    }
+  }
+  @else if $size==medium-down {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+  @else if $size==large-up {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+  @else if $size==large-down {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+  @else if $size==larger-up {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  }
+  @else if $size==larger-down {
+    @media (max-width: 1800px) {
+      @content;
+    }
+  }
+}

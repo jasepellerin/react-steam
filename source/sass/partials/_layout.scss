@@ -1,0 +1,23 @@
+$neat-grid: ( columns: 12, gutter: 0px);
+li {
+  margin: $tiny-spacing 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th {
+  font-family: $title-font-family;
+  font-size: 1.3rem;
+}
+
+td,
+th {
+  text-align: initial;
+  padding: $small-spacing;
+}
+
+tbody tr:nth-child(odd) {
+  background: $landing-color;
+}
