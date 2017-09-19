@@ -48,6 +48,13 @@
   text-align: center;
 }
 
+.full-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .inline {
   display: inline-block;
 }
