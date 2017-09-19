@@ -1,7 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-)
+const title = 'Steam Player Information'
+const searchBar =
+  <form action="alert('hi')">
+    <input type='text' placeholder='Search users...' />
+  </form>
+
+const element =
+  <div>
+    <h1>{title}</h1>
+    {searchBar}
+  </div>
+const root = document.getElementById('root')
+
+ReactDOM.render(element, root)
