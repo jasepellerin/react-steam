@@ -2,7 +2,7 @@ const webpackConfig = require('./webpack.config.js')
 const webpackProdConfig = require('./webpack.prod.config.js')
 
 /* eslint global-require: "off" */
-module.exports = function exports (grunt) {
+module.exports = function exports(grunt) {
   // Project configuration.
   grunt.initConfig({
     clean: {
@@ -73,8 +73,10 @@ module.exports = function exports (grunt) {
     sass: {
       dist: {
         options: {
-          loadPath: [require('node-bourbon').includePaths,
-            require('node-neat').includePaths]
+          loadPath: [
+            require('node-bourbon').includePaths,
+            require('node-neat').includePaths
+          ]
         },
         files: {
           'temp/css/main.css': 'source/sass/main.scss'
@@ -108,7 +110,7 @@ module.exports = function exports (grunt) {
         tasks: ['copy']
       },
       scripts: {
-        files: ['source/scripts/**/*.js', 'source/scripts/**/*.vue'],
+        files: ['source/scripts/**/*'],
         tasks: ['webpack', 'uglify', 'clean:temp']
       }
     }
@@ -134,4 +136,4 @@ module.exports = function exports (grunt) {
 
   // Wipe dist and then watch
   grunt.registerTask('cleanWatch', ['clean:dist', 'default'])
-};
+}
