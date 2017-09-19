@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 const title = 'Steam Player Information'
 const searchBar =
-  <form action="alert('hi')">
+  <form action={alert('hi')}>
     <input type='text' placeholder='Search users...' />
   </form>
 
