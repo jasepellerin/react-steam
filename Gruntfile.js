@@ -111,7 +111,7 @@ module.exports = function exports(grunt) {
       },
       scripts: {
         files: ['source/scripts/**/*'],
-        tasks: ['webpack', 'uglify', 'clean:temp']
+        tasks: ['webpack:dev', 'uglify', 'clean:temp']
       }
     }
   })
