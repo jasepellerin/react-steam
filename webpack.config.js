@@ -3,8 +3,8 @@ const path = require('path')
 module.exports = {
   entry: './source/scripts/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'temp/scripts'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'dist/scripts'),
+    filename: 'bundle.min.js'
   },
   module: {
     rules: [

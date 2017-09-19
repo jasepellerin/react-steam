@@ -111,7 +111,7 @@ module.exports = function exports(grunt) {
       },
       scripts: {
         files: ['source/scripts/**/*'],
-        tasks: ['webpack:dev', 'uglify', 'clean:temp']
+        tasks: ['webpack:dev', 'clean:temp']
       }
     }
   })
@@ -128,7 +128,7 @@ module.exports = function exports(grunt) {
 
   // Default task
   grunt.registerTask('default', ['sass', 'copy', 'webpack:dev', 'postcss',
-    'cssmin', 'uglify', 'clean:temp', 'watch'])
+    'cssmin', 'clean:temp', 'watch'])
 
   // Production build
   grunt.registerTask('buildProd', ['clean:dist', 'sass', 'copy', 'webpack:prod',
