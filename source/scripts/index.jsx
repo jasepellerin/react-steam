@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 
 const title = 'Steam Player Information'
 const searchBar =
-  <form action={alert('hi')}>
-    <input type='text' placeholder='Search users...' />
+  <form onSubmit={() => { alert('hi') }} method="get">
+    <input type='text' autoFocus='true' placeholder='Find users...' />
+    <input type='submit' value="Search" />
   </form>
 
 const element =
