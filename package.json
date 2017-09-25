@@ -8,7 +8,7 @@
     "url": "git+https://github.com/jasepellerin/react-steam.git"
   },
   "scripts": {
-    "start": "node server/server.js & browser-sync start --proxy 'localhost:4000' --files 'dist'"
+    "start": "grunt"
   },
   "keywords": [
     "boilerplate",
