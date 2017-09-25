@@ -10,8 +10,14 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  steam(req.query)
-  res.redirect('static/html/')
+  const response = steam(req.query.search_term)
+  response.then((result) => {
+    if (result && result.hasOwnProperty('redirect')) {
+      res.redirect(result.redirect)
+    } else {
+      res.send(result)
+    }
+  })
 })
 
 app.get('*', (req, res) => {
