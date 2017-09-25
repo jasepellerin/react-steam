@@ -12,6 +12,7 @@ rules:
   no-console: ["warn"]
   no-alert: ["warn"]
   react/jsx-uses-react: ["error"]
+  react/jsx-uses-vars: ["error"]
   space-before-function-paren: ["off"]
 parserOptions:
   ecmaVersion: 2017
