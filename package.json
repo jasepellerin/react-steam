@@ -1,11 +1,11 @@
 {
-  "name": "beatrice",
-  "version": "1.0.0",
+  "name": "react-steam",
+  "version": "0.0.1",
   "description": "A light-weight boilerplate for HTML, Sass, and Vue. Includes Babel, webpack, Grunt, and ESLint.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasepellerin/beatrice.git"
+    "url": "git+https://github.com/jasepellerin/react-steam.git"
   },
   "keywords": [
     "boilerplate",
@@ -17,9 +17,9 @@
   "author": "Jase Pellerin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jasepellerin/beatrice/issues"
+    "url": "https://github.com/jasepellerin/react-steam/issues"
   },
-  "homepage": "https://github.com/jasepellerin/beatrice#readme",
+  "homepage": "https://github.com/jasepellerin/react-steam#readme",
   "dependencies": {
     "autoprefixer": "^7.1.2",
     "node-bourbon": "^4.2.8",
@@ -42,6 +42,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.3.0",
     "eslint-plugin-standard": "^3.0.1",
+    "express": "^4.15.5",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
