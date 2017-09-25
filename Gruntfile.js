@@ -5,9 +5,27 @@ const webpackProdConfig = require('./webpack.prod.config.js')
 module.exports = function exports(grunt) {
   // Project configuration.
   grunt.initConfig({
+    browserSync: {
+      dev: {
+        bsFiles: {
+          src: 'dist/'
+        },
+        options: {
+          proxy: 'localhost:4000'
+        }
+      }
+    },
     clean: {
       dist: 'dist',
       temp: 'temp'
+    },
+    concurrent: {
+      dev: {
+        tasks: ['browserSync', 'nodemon', 'watch'],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
     },
     copy: {
       css: {
@@ -59,6 +77,11 @@ module.exports = function exports(grunt) {
         }]
       }
     },
+    nodemon: {
+      dev: {
+        script: 'server/index.js'
+      }
+    },
     postcss: {
       options: {
         map: true,
@@ -103,15 +126,19 @@ module.exports = function exports(grunt) {
       css: {
         files: ['source/static/css/*.css', 'source/sass/**/*.scss'],
         tasks: ['sass', 'copy:css', 'postcss',
-          'cssmin', 'clean:temp']
+          'cssmin', 'clean:temp', 'browserSync']
+      },
+      server: {
+        files: 'server/**/*',
+        tasks: ['nodemon']
       },
       static: {
         files: 'source/static/**/*',
-        tasks: ['copy']
+        tasks: ['copy', 'browserSync']
       },
       scripts: {
         files: ['source/scripts/**/*'],
-        tasks: ['webpack:dev', 'clean:temp']
+        tasks: ['webpack:dev', 'clean:temp', 'browserSync']
       }
     }
   })
@@ -123,12 +150,15 @@ module.exports = function exports(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-browser-sync')
+  grunt.loadNpmTasks('grunt-concurrent')
+  grunt.loadNpmTasks('grunt-nodemon')
   grunt.loadNpmTasks('grunt-postcss')
   grunt.loadNpmTasks('grunt-webpack')
 
   // Default task
   grunt.registerTask('default', ['sass', 'copy', 'webpack:dev', 'postcss',
-    'cssmin', 'clean:temp', 'watch'])
+    'cssmin', 'clean:temp', 'concurrent'])
 
   // Production build
   grunt.registerTask('buildProd', ['clean:dist', 'sass', 'copy', 'webpack:prod',
