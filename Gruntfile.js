@@ -12,7 +12,8 @@ module.exports = function exports(grunt) {
         },
         options: {
           open: false,
-          proxy: 'localhost:4000'
+          proxy: 'localhost:4000',
+          reloadDelay: 500
         }
       }
     },
@@ -161,6 +162,9 @@ module.exports = function exports(grunt) {
   // Default task
   grunt.registerTask('default', ['sass', 'copy', 'webpack:dev', 'postcss',
     'cssmin', 'clean:temp', 'concurrent'])
+
+  // Load concurrent tasks without initial build
+  grunt.registerTask('start', ['concurrent'])
 
   // Production build
   grunt.registerTask('buildProd', ['clean:dist', 'sass', 'copy', 'webpack:prod',
