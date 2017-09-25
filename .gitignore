@@ -3,3 +3,4 @@
 /temp/
 /.sass-cache/
 .brackets.json
+server/steam-api-key.json
