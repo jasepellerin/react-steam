@@ -11,6 +11,7 @@ module.exports = function exports(grunt) {
           src: 'dist/'
         },
         options: {
+          open: false,
           proxy: 'localhost:4000'
         }
       }
@@ -21,7 +22,7 @@ module.exports = function exports(grunt) {
     },
     concurrent: {
       dev: {
-        tasks: ['browserSync', 'nodemon', 'watch'],
+        tasks: ['nodemon', 'watch', 'browserSync'],
         options: {
           logConcurrentOutput: true
         }
