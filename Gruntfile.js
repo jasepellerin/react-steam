@@ -80,7 +80,12 @@ module.exports = function exports(grunt) {
     },
     nodemon: {
       dev: {
-        script: 'server/index.js'
+        script: 'server/index.js',
+        options: {
+          env: {
+            PORT: '4000'
+          }
+        }
       }
     },
     postcss: {
@@ -127,19 +132,15 @@ module.exports = function exports(grunt) {
       css: {
         files: ['source/static/css/*.css', 'source/sass/**/*.scss'],
         tasks: ['sass', 'copy:css', 'postcss',
-          'cssmin', 'clean:temp', 'browserSync']
-      },
-      server: {
-        files: 'server/**/*',
-        tasks: ['nodemon']
+          'cssmin', 'clean:temp']
       },
       static: {
         files: 'source/static/**/*',
-        tasks: ['copy', 'browserSync']
+        tasks: ['copy']
       },
       scripts: {
         files: ['source/scripts/**/*'],
-        tasks: ['webpack:dev', 'clean:temp', 'browserSync']
+        tasks: ['webpack:dev', 'clean:temp']
       }
     }
   })
