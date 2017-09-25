@@ -5,7 +5,7 @@ const app = express()
 app.use('/static', express.static('dist'))
 
 app.get('/', (req, res) => {
-  res.redirect('static/dist/html/')
+  res.redirect('static/html/')
 })
 
 app.get('*', (req, res) => {
