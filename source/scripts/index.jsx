@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { SearchForm } from './components/search_form.jsx'
 
 const title = 'Steam Player Information'
-const searchBar =
-  <form action="/search"
-    method="get">
-    <input type='text' name="search_term" autoFocus='true' placeholder='Find users...' />
-    <input type='submit' value="Search" />
-  </form>
 
 const element =
   <div>
     <h1>{title}</h1>
-    {searchBar}
+    <SearchForm />
   </div>
 const root = document.getElementById('root')
 
