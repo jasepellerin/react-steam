@@ -1,5 +1,6 @@
 const fetch = require('node-fetch')
 const apiKey = require('./steam-api-key.json').key
+
 const testURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/' +
   'v2/?key=' + apiKey + '&steamids='
 
@@ -14,12 +15,11 @@ function getApiResults(query) {
     }).then(response => {
       const players = response.response.players
       if (players.length > 0) {
-        return response.players
+        return players
       }
       return { 'redirect': 'static/html/' }
     })
     .catch(function (error) {
-      console.error(error.message)
       return error
     })
 }
