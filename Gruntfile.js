@@ -13,7 +13,7 @@ module.exports = function exports(grunt) {
         options: {
           open: false,
           proxy: 'localhost:4000',
-          reloadDelay: 500
+          reloadDelay: 2000
         }
       }
     },
