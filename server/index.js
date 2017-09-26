@@ -1,5 +1,5 @@
 import React from 'react'
-import { App } from '../source/scripts/app.jsx'
+import { App } from '../source/scripts/components/app.jsx'
 import { renderToString } from 'react-dom/server'
 import template from '../source/templates/template'
 import express from 'express'
