@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+import fetch from 'node-fetch'
 const apiKey = require('./steam-api-key.json').key
 
 const testURL = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/' +
