@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchForm } from './search_form.jsx'
+import { SearchForm } from './components/search_form.jsx'
 
 const title = 'Steam Information'
 export class App extends React.Component {
