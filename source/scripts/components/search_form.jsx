@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { query } from '../redux/actions'
+import { query, games } from '../redux/actions'
 
 let SearchForm = ({ dispatch }) => {
   let input
@@ -14,7 +14,7 @@ let SearchForm = ({ dispatch }) => {
       fetch('/search/' + input.value).then(result => result.json())
         .then(result => {
           dispatch(query(input.value))
-          console.log(result)
+          dispatch(games(result.games))
         })
     }}>
       <input ref={node => {
