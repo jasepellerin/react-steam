@@ -8,7 +8,7 @@ module.exports = function exports(grunt) {
     browserSync: {
       dev: {
         bsFiles: {
-          src: 'dist/'
+          src: ['dist/', 'source/templates/']
         },
         options: {
           open: false,
