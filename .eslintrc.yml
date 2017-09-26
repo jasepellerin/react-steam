@@ -5,8 +5,9 @@ plugins:
   - react
 env:
   browser: true
-  node: true
   es6: true
+  jest: true
+  node: true
 rules: 
   max-len: [1, 80, 2]
   no-console: ["warn"]
