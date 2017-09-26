@@ -6,6 +6,7 @@ export class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Steam User Information</h1>
         <SearchForm />
         <Profile />
       </div>
