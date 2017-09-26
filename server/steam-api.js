@@ -18,13 +18,13 @@ function getApiResults(query) {
       if (response.ok) {
         return response.json()
       } else {
-        throw new Error('Response not ok')
+        throw new Error('No games found for given ID')
       }
     }).then(response => {
       return response.response
     })
     .catch(function (error) {
-      return error
+      return error.message
     })
 }
 

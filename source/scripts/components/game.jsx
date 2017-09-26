@@ -1,8 +1,13 @@
 import React from 'react'
 
-const Game = ({ title }) => (
+const Game = ({ game }) => (
   <div>
-    {title}
+    {game.name}
+    {game.img_logo_url
+      ? <img src={'http://media.steampowered.com/steamcommunity/public/' +
+        'images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'} />
+      : undefined
+    }
   </div>
 )
 

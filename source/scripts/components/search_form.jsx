@@ -13,9 +13,13 @@ let SearchForm = ({ dispatch }) => {
       }
       fetch('/search/' + input.value).then(result => result.json())
         .then(result => {
-          dispatch(query(input.value))
-          dispatch(games(result.games))
+          if (typeof result === 'string') {
+            dispatch(games([]))
+          } else {
+            dispatch(games(result.games))
+          }
         })
+      dispatch(query(input.value))
     }}>
       <input ref={node => {
         input = node

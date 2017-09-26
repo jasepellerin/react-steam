@@ -6,7 +6,7 @@ const Profile = ({ games }) => (
     {games ? games.map(game =>
       <Game
         key={game.id}
-        title={game.name} />
+        game={game} />
     ) : ''}
   </div>
 )
