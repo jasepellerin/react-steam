@@ -1,3 +1,13 @@
-test('Sample', () => {
-  expect(3).toBe(3)
+let server
+
+beforeEach(() => {
+  server = require('../server').server
+})
+
+afterEach(() => {
+  server.close()
+})
+
+test('Server is defined', () => {
+  expect(server).toBeDefined()
 })
