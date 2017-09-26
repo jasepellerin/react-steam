@@ -83,6 +83,7 @@ module.exports = function exports(grunt) {
       dev: {
         script: 'server/index.js',
         options: {
+          exec: 'babel-node',
           env: {
             PORT: '4000'
           }
