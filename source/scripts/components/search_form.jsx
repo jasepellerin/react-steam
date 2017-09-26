@@ -8,10 +8,12 @@ export class SearchForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  // Handle user typing in input
   handleChange(event) {
     this.setState({ id: event.target.value })
   }
 
+  // Send data to server on submit and process results
   handleSubmit(event) {
     fetch('/search/' + this.state.id).then(result => result.json()).then(result => console.log(result))
     event.preventDefault()
