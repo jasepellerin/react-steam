@@ -21,7 +21,7 @@ function getApiResults(query) {
         throw new Error('Response not ok')
       }
     }).then(response => {
-      return response
+      return response.response
     })
     .catch(function (error) {
       return error
