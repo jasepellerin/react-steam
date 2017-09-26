@@ -1,32 +1,29 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { query } from '../redux/actions'
 
-export class SearchForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { id: '' }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
+let SearchForm = ({ dispatch }) => {
+  let input
 
-  // Handle user typing in input
-  handleChange(event) {
-    this.setState({ id: event.target.value })
-  }
-
-  // Send data to server on submit and process results
-  handleSubmit(event) {
-    fetch('/search/' + this.state.id).then(result => result.json()).then(result => console.log(result))
-    event.preventDefault()
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input type='text' name="search_term"
-          autoFocus='true' placeholder='Find users...'
-          value={this.state.id} onChange={this.handleChange} />
-        <input type='submit' value="Search" />
-      </form>
-    )
-  }
+  return (
+    <form onSubmit={e => {
+      e.preventDefault()
+      if (!input.value.trim()) {
+        return
+      }
+      fetch('/search/' + input.value).then(result => result.json())
+        .then(result => {
+          dispatch(query(input.value))
+          console.log(result)
+        })
+    }}>
+      <input ref={node => {
+        input = node
+      }}
+        type='text' name="search_term" autoFocus='true' placeholder='Find users...' />
+      <input type='submit' value="Search" />
+    </form>
+  )
 }
+
+export default connect()(SearchForm)

@@ -1,23 +1,42 @@
 import React from 'react'
 import { App } from '../source/scripts/components/app.jsx'
 import { renderToString } from 'react-dom/server'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import query from '../source/scripts/redux/reducers/query.js'
 import template from '../source/templates/template'
 import express from 'express'
 import steam from './steam-api'
 
 const app = express()
 
+function handleRender(req, res, title) {
+  // Create a new Redux store instance
+  const store = createStore(query)
+
+  const body = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+
+  // Grab the initial state from our Redux store
+  const preloadedState = store.getState()
+
+  // Send the rendered page back to the client
+  res.send(template({
+    title: 'Steam Info',
+    body: body,
+    preloadedState: preloadedState
+  }))
+}
+
 // Serve static files in dist
 app.use('/static', express.static('dist'))
 
 // Display index.html when default route is accessed
 app.get('/', (req, res) => {
-  const appString = renderToString(<App />)
-
-  res.send(template({
-    body: appString,
-    title: 'Steam Info'
-  }))
+  handleRender(req, res, 'Steam Info')
 })
 
 // Process search queries
