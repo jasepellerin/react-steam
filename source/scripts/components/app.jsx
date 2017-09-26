@@ -5,7 +5,7 @@ const title = 'Steam Information'
 export class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="centered full-centered">
         <h1>{title}</h1>
         <SearchForm />
       </div>

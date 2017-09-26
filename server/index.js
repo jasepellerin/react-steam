@@ -1,5 +1,9 @@
-const express = require('express')
-const steam = require('./steam-api')
+import React from 'react'
+import { App } from '../source/scripts/components/app.jsx'
+import { renderToString } from 'react-dom/server'
+import template from '../source/templates/template'
+import express from 'express'
+import steam from './steam-api'
 
 const app = express()
 
@@ -8,7 +12,12 @@ app.use('/static', express.static('dist'))
 
 // Display index.html when default route is accessed
 app.get('/', (req, res) => {
-  res.redirect('static/html/')
+  const appString = renderToString(<App />)
+
+  res.send(template({
+    body: appString,
+    title: 'Steam Info'
+  }))
 })
 
 // Process search queries
