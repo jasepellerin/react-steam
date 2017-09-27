@@ -47,7 +47,6 @@
 .hover-fill {
   position: relative;
   background-color: transparent;
-  border: .3rem solid $highlight-color;
   &:after {
     content: '';
     position: absolute;
