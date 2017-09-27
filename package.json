@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/jasepellerin/react-steam#readme",
   "dependencies": {
-    "autoprefixer": "^7.1.2",
     "foundation-sites": "^6.4.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -50,6 +49,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "express": "^4.15.5",
     "grunt": "^1.0.1",
+    "grunt-autoprefixer": "^3.0.4",
     "grunt-browser-sync": "^2.2.0",
     "grunt-concurrent": "^2.3.1",
     "grunt-contrib-clean": "^1.1.0",
@@ -59,7 +59,6 @@
     "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-nodemon": "^0.4.2",
-    "grunt-postcss": "^0.8.0",
     "grunt-webpack": "^3.0.0",
     "jest": "^21.1.0",
     "node-fetch": "^1.7.3",

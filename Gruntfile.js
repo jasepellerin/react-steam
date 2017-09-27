@@ -5,6 +5,14 @@ const webpackProdConfig = require('./webpack.prod.config.js')
 module.exports = function exports(grunt) {
   // Project configuration.
   grunt.initConfig({
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+      },
+      your_target: {
+        src: 'temp/css/*.css'
+      }
+    },
     browserSync: {
       dev: {
         bsFiles: {
@@ -90,17 +98,6 @@ module.exports = function exports(grunt) {
         }
       }
     },
-    postcss: {
-      options: {
-        map: true,
-        processors: [
-          require('autoprefixer')
-        ]
-      },
-      dist: {
-        src: 'temp/css/*.css'
-      }
-    },
     sass: {
       dist: {
         options: {
@@ -132,7 +129,7 @@ module.exports = function exports(grunt) {
       },
       css: {
         files: ['source/static/css/*.css', 'source/sass/**/*.scss'],
-        tasks: ['sass', 'copy:css', 'postcss',
+        tasks: ['sass', 'copy:css', 'autoprefixer',
           'cssmin', 'clean:temp']
       },
       static: {
@@ -153,14 +150,14 @@ module.exports = function exports(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass')
   grunt.loadNpmTasks('grunt-contrib-uglify')
   grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-autoprefixer')
   grunt.loadNpmTasks('grunt-browser-sync')
   grunt.loadNpmTasks('grunt-concurrent')
   grunt.loadNpmTasks('grunt-nodemon')
-  grunt.loadNpmTasks('grunt-postcss')
   grunt.loadNpmTasks('grunt-webpack')
 
   // Default task
-  grunt.registerTask('default', ['sass', 'copy', 'webpack:dev', 'postcss',
+  grunt.registerTask('default', ['sass', 'copy', 'webpack:dev', 'autoprefixer',
     'cssmin', 'clean:temp', 'concurrent'])
 
   // Load concurrent tasks without initial build
@@ -168,7 +165,7 @@ module.exports = function exports(grunt) {
 
   // Production build
   grunt.registerTask('buildProd', ['clean:dist', 'sass', 'copy', 'webpack:prod',
-    'postcss', 'cssmin', 'uglify', 'clean:temp'])
+    'autoprefixer', 'cssmin', 'uglify', 'clean:temp'])
 
   // Wipe dist and then watch
   grunt.registerTask('cleanWatch', ['clean:dist', 'default'])
