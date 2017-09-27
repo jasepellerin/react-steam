@@ -6,7 +6,7 @@ const baseImgURL = 'http://media.steampowered.com/steamcommunity/' +
 const imgExt = '.jpg'
 
 const Game = ({ game }) => (
-  <a className='half-width hover-fill'
+  <a
     href={baseURL + game.appid}
     target='_blank'>
     {game.img_logo_url

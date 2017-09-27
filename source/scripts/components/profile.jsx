@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
 })
 
 const Profile = ({ games }) => (
-  <div className='flex-container'>
+  <div>
     {games ? games.map(game =>
       <Game
         key={game.id}

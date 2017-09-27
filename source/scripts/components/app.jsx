@@ -5,7 +5,7 @@ import Profile from '../components/profile.jsx'
 export class App extends React.Component {
   render() {
     return (
-      <div className='content-container centered'>
+      <div>
         <h1>Steam User Information</h1>
         <SearchForm />
         <Profile />
