@@ -105,8 +105,7 @@ module.exports = function exports(grunt) {
       dist: {
         options: {
           loadPath: [
-            require('node-bourbon').includePaths,
-            require('node-neat').includePaths
+            'node_modules/foundation-sites/scss'
           ]
         },
         files: {
