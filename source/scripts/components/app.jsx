@@ -5,9 +5,11 @@ import Profile from '../components/profile.jsx'
 export class App extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Steam User Information</h1>
-        <SearchForm />
+      <div className="main">
+        <div className="top-bar">
+          <h1>Steam User Information</h1>
+          <SearchForm />
+        </div>
         <Profile />
       </div>
     )

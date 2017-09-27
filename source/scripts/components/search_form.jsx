@@ -24,7 +24,8 @@ let SearchForm = ({ dispatch }) => {
       <input ref={node => {
         input = node
       }}
-        type='text' name="search_term" autoFocus='true' placeholder='Find users...' />
+        type='text' name="search_term"
+        autoFocus='true' placeholder='Find users...' />
       <input type='submit' value="Search" />
     </form>
   )

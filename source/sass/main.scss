@@ -2,6 +2,7 @@
 @import 'settings';
 // Third party
 @import "foundation";
+@include foundation-everything;
 // Mixins
 @import "mixins/mixins";
 // Partials
