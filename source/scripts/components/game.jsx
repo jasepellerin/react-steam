@@ -1,14 +1,23 @@
 import React from 'react'
 
+const baseURL = 'http://store.steampowered.com/app/'
+const baseImgURL = 'http://media.steampowered.com/steamcommunity/' +
+  'public/images/apps/'
+const imgExt = '.jpg'
+
 const Game = ({ game }) => (
-  <div>
-    {game.name}
+  <a className='half-width hover-fill'
+    href={baseURL + game.appid}
+    target='_blank'>
     {game.img_logo_url
-      ? <img src={'http://media.steampowered.com/steamcommunity/public/' +
-        'images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'} />
+      ? <img
+        alt={game.name}
+        title={game.name}
+        src={baseImgURL + game.appid + '/' + game.img_logo_url + imgExt} />
       : undefined
     }
-  </div>
+    <h3>{game.name}</h3>
+  </a>
 )
 
 export default Game
