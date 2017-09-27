@@ -7,23 +7,25 @@ const baseImgURL = 'http://media.steampowered.com/steamcommunity/' +
 const imgExt = '.jpg'
 
 const Game = ({ game }) => (
-  <a className='card game'
-    href={baseURL + game.appid}
-    target='_blank'>
-    <div className='card-divider'>
-      <h3>{game.name}</h3>
-    </div>
+  <div className='card game'>
+    <a
+      href={baseURL + game.appid}
+      target='_blank'>
+      <div className='card-divider'>
+        <h3>{game.name}</h3>
+      </div>
+    </a>
     {game.img_logo_url
       ? <img
         alt={game.name}
         title={game.name}
         src={baseImgURL + game.appid + '/' + game.img_logo_url + imgExt} />
-      : undefined
+      : 'No Image'
     }
-    <div class="card-section">
+    <div className="card-section">
       <p>Playtime: {writeDuration(game.playtime_forever)}</p>
     </div>
-  </a>
+  </div>
 )
 
 export default Game
