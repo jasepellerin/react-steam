@@ -1,4 +1,4 @@
-function writeDuration(minutes) {
+function formatDuration(minutes) {
   const minInDay = 1440
   const minInHour = 60
   let days = Math.floor(minutes / minInDay)
@@ -9,4 +9,4 @@ function writeDuration(minutes) {
   return days + ' days, ' + hours + ' hours, ' + minutes + ' minutes'
 }
 
-export default writeDuration
+export default formatDuration
