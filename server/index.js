@@ -6,7 +6,7 @@ import { createStore } from 'redux'
 import query from '../source/scripts/redux/reducers/query'
 import template from '../source/templates/'
 import express from 'express'
-import steam from './steam-api'
+import SteamApi from './SteamApi'
 
 const app = express()
 
@@ -14,6 +14,7 @@ function handleRender(req, res, title) {
   // Create a new Redux store instance
   const store = createStore(query)
 
+  // Wrap the app in a Provider with the Redux store
   const body = renderToString(
     <Provider store={store}>
       <App />
@@ -41,7 +42,7 @@ app.get('/', (req, res) => {
 
 // Process search queries
 app.get('/search/:query', (req, res) => {
-  steam(req.params.query).then(result => { res.json(result) })
+  SteamApi.getGames(req.params.query).then(result => { res.json(result) })
 })
 
 // Send 404 for any other routes
