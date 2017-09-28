@@ -7,6 +7,17 @@ const baseImgURL = 'http://media.steampowered.com/steamcommunity/' +
 const imgExt = '.jpg'
 
 class Game extends React.Component {
+  getImage(game) {
+    if (game.img_logo_url) {
+      return <img
+        alt={game.name}
+        title={game.name}
+        src={baseImgURL + game.appid + '/' + game.img_logo_url + imgExt} />
+    } else {
+      return 'No Image'
+    }
+  }
+
   render() {
     const game = this.props.game
     return <div className='card game'>
@@ -17,17 +28,11 @@ class Game extends React.Component {
           <h3>{game.name}</h3>
         </div>
       </a>
-      {game.img_logo_url
-        ? <img
-          alt={game.name}
-          title={game.name}
-          src={baseImgURL + game.appid + '/' + game.img_logo_url + imgExt} />
-        : 'No Image'
-      }
-      <div className="card-section">
+      {this.getImage(game)}
+      < div className="card-section">
         <p>Playtime: {writeDuration(game.playtime_forever)}</p>
       </div>
-    </div>
+    </div >
   }
 }
 
