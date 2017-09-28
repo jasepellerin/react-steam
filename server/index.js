@@ -42,7 +42,13 @@ app.get('/', (req, res) => {
 
 // Process search queries
 app.get('/search/:query', (req, res) => {
-  SteamApi.getGames(req.params.query).then(result => { res.json(result) })
+  let query
+  query = parseInt(req.params.query)
+  if (typeof query !== 'number' || isNaN(query)) {
+    res.json({ hasError: true, error: 'Invalid ID' })
+  } else {
+    SteamApi.getGames(req.params.query).then(result => { res.json(result) })
+  }
 })
 
 // Send 404 for any other routes

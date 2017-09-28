@@ -9,18 +9,19 @@ class SearchForm extends React.Component {
         className='search'
         onSubmit={e => {
           e.preventDefault()
-          if (!input.value.trim()) {
+          const query = input.value
+          if (query.length === 0) {
             return
           }
-          fetch('/search/' + input.value).then(result => result.json())
+          fetch('/search/' + query).then(result => result.json())
             .then(result => {
-              if (typeof result === 'string') {
-                this.props.updateGames([])
+              if (result.hasError) {
+                this.props.updateGames()
               } else {
                 this.props.updateGames(result.games)
+                this.props.updateQuery(query)
               }
             })
-          this.props.updateQuery(input.value)
         }}>
         <input ref={node => {
           input = node
