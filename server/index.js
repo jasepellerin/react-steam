@@ -3,7 +3,7 @@ import { App } from '../source/scripts/components/App.jsx'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import query from '../source/scripts/redux/reducers/query'
+import reducers from '../source/scripts/redux/reducers/'
 import template from '../source/templates/'
 import express from 'express'
 import SteamApi from './SteamApi'
@@ -12,7 +12,7 @@ const app = express()
 
 function handleRender(req, res, title) {
   // Create a new Redux store instance
-  const store = createStore(query)
+  const store = createStore(reducers)
 
   // Wrap the app in a Provider with the Redux store
   const body = renderToString(

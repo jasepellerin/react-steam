@@ -1,9 +1,9 @@
-export const query = (text) => ({
+export const updateQuery = (text) => ({
   type: 'UPDATE_QUERY',
   text: text
 })
 
-export const games = (array) => ({
+export const updateGames = (array) => ({
   type: 'UPDATE_GAMES',
   array: array
 })

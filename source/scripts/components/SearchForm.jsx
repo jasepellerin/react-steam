@@ -15,12 +15,12 @@ class SearchForm extends React.Component {
           fetch('/search/' + input.value).then(result => result.json())
             .then(result => {
               if (typeof result === 'string') {
-                this.props.games([])
+                this.props.updateGames([])
               } else {
-                this.props.games(result.games)
+                this.props.updateGames(result.games)
               }
             })
-          this.props.query(input.value)
+          this.props.updateQuery(input.value)
         }}>
         <input ref={node => {
           input = node

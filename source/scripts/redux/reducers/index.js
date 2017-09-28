@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import query from './query'
 import games from './games'
+import query from './query'
 
 const reducers = combineReducers({
-  query,
-  games
+  games,
+  query
 })
 
 export default reducers
