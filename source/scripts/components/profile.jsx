@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
 function getGameArray(games) {
   let gameArray = games.map(game =>
     <Game
-      key={game.id}
+      key={game.appid}
       game={game} />
   )
   return gameArray
@@ -21,7 +21,7 @@ class Profile extends React.Component {
   render() {
     let games = this.props.games
     return (
-      <div className='Profile'>
+      <div className='profile'>
         {
           games ? getGameArray(games) : null
         }
