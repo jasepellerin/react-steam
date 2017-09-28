@@ -7,6 +7,10 @@
   justify-content: center;
 }
 
+.profile {
+  @include xy-grid;
+}
+
 .full-height {
   @include xy-cell-block-container;
   height: 100vh;
