@@ -7,9 +7,12 @@ import reducers from '../source/scripts/redux/reducers/'
 import template from '../source/templates/'
 import express from 'express'
 import SteamApi from './SteamApi'
+import MongoController from './MongoController'
 
 const app = express()
+const mongo = new MongoController()
 
+// Handle server rendering of react app
 function handleRender(req, res, title) {
   // Create a new Redux store instance
   const store = createStore(reducers)
@@ -42,12 +45,33 @@ app.get('/', (req, res) => {
 
 // Process search queries
 app.get('/search/:query', (req, res) => {
-  let query
-  query = parseInt(req.params.query)
+  let query = parseInt(req.params.query)
+  // Check that ID is a number and is not NaN
   if (typeof query !== 'number' || isNaN(query)) {
     res.json({ hasError: true, error: 'Invalid ID' })
   } else {
-    SteamApi.getGames(req.params.query).then(result => { res.json(result) })
+    // Check for user in our database
+    mongo.getMatchingDocumentsInCollection('users', { _id: query })
+      .then(result => {
+        if (result.length !== 0) {
+          // Return local version
+          res.json(result[0])
+        } else {
+          // Get data from Steam
+          SteamApi.getGames(req.params.query).then(result => {
+            // Construct new user
+            let user = {}
+            user._id = query
+            user.games = result.games
+            user.gameCount = result.game_count
+            user.lastModified = Date.now()
+            // Add the user to mongo
+            mongo.addDocument('users', user)
+            // Return the Steam data
+            res.json(user)
+          })
+        }
+      })
   }
 })
 
