@@ -32,7 +32,7 @@ class Game extends React.Component {
       < div className="card-section">
         <p>Playtime: {writeDuration(game.playtime_forever)}</p>
       </div>
-    </div >
+    </div>
   }
 }
 
