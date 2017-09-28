@@ -1,10 +1,5 @@
 import React from 'react'
 import SearchFormContainer from '../containers/SearchFormContainer'
-import { connect } from 'react-redux'
-
-const mapStateToProps = (state) => ({
-  games: state.games
-})
 
 const Title = () => (<h1>Steam User Information</h1>)
 
@@ -33,4 +28,4 @@ class TopBar extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(TopBar)
+export default TopBar

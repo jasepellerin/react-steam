@@ -1,10 +1,5 @@
 import React from 'react'
 import Game from './Game.jsx'
-import { connect } from 'react-redux'
-
-const mapStateToProps = (state) => ({
-  games: state.games
-})
 
 // If games exist, map them to gameArray as Game elements
 function getGameArray(games) {
@@ -30,4 +25,4 @@ class Profile extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default Profile
