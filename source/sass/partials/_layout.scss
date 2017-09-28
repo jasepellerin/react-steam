@@ -1,7 +1,3 @@
-#root {
-  @include xy-grid-container(80vw);
-}
-
 .main {
   @include xy-grid;
   justify-content: center;
@@ -9,6 +5,7 @@
 
 .profile {
   @include xy-grid;
+  width: 80vw;
 }
 
 .full-height {
