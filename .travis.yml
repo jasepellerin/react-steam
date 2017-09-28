@@ -4,4 +4,4 @@ node_js:
 script:
   - echo '{"steamKey":"","mongoUri":""}' > server/secrets.json
   - npm test
-}
+  
