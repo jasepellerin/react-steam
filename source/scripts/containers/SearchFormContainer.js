@@ -3,7 +3,7 @@ import { updateGames, updateQuery } from '../redux/actions'
 import { connect } from 'react-redux'
 import SearchForm from '../components/SearchForm.jsx'
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({ updateGames, updateQuery }, dispatch)
 }
 
