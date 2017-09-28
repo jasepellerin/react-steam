@@ -1,9 +1,21 @@
+#root {
+  @include xy-grid-container(80vw);
+}
+
 .main {
   @include xy-grid;
+  justify-content: center;
+}
+
+.full-height {
+  @include xy-cell-block-container;
+  height: 100vh;
+  justify-content: center;
 }
 
 .top-bar {
   text-align: center;
+  width: 100%;
 }
 
 .search {
