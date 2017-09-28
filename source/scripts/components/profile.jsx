@@ -9,7 +9,8 @@ const mapStateToProps = (state) => ({
 // Render the profile section
 class Profile extends React.Component {
   render() {
-    let gameArray
+    let gameArray = null
+    // If games exist, map them to gameArray as Game elements
     if (this.props.games) {
       gameArray = this.props.games.map(game =>
         <Game
