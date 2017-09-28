@@ -6,16 +6,19 @@ const mapStateToProps = (state) => ({
   games: state.games
 })
 
+// Render the profile section
 class Profile extends React.Component {
   render() {
+    let gameArray
+    if (this.props.games) {
+      gameArray = this.props.games.map(game =>
+        <Game
+          key={game.id}
+          game={game} />
+      )
+    }
     return (
-      <div className="main">
-        {this.props.games ? this.props.games.map(game =>
-          <Game
-            key={game.id}
-            game={game} />
-        ) : ''}
-      </div>
+      gameArray
     )
   }
 }
