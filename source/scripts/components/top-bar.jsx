@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchForm from './search-form.jsx'
+import SearchFormContainer from '../containers/search-form-container'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({
@@ -22,11 +22,11 @@ class TopBar extends React.Component {
               <Title />
             </div>,
             <div key={2} className='top-bar-right'>
-              <SearchForm />
+              <SearchFormContainer />
             </div>]
           : [
             <Title key={1} />,
-            < SearchForm key={2} />]
+            < SearchFormContainer key={2} />]
         }
       </div>
     )

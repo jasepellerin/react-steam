@@ -1,11 +1,4 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import { query, games } from '../redux/actions'
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ games, query }, dispatch)
-}
 
 class SearchForm extends React.Component {
   render() {
@@ -42,4 +35,4 @@ class SearchForm extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(SearchForm)
+export default SearchForm
