@@ -16,6 +16,7 @@ class SearchForm extends React.Component {
           fetch('/search/' + query).then(result => result.json())
             .then(result => {
               if (result.hasError) {
+                this.props.updateQuery(query)
                 this.props.updateGames()
               } else {
                 this.props.updateQuery(query)
