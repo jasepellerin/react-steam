@@ -18,12 +18,12 @@ class SearchForm extends React.Component {
               if (result.hasError) {
                 this.props.updateGames()
               } else {
-                this.props.updateGames(result.games)
                 this.props.updateQuery(query)
+                this.props.updateGames(result.games)
               }
             })
         }}>
-        <input ref={node => {
+        <input defaultValue={this.props.query} ref={node => {
           input = node
         }}
           type='search'
