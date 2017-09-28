@@ -1,6 +1,6 @@
 import React from 'react'
-import TopBar from './top-bar.jsx'
-import Profile from '../components/profile.jsx'
+import TopBar from './TopBar.jsx'
+import Profile from './Profile.jsx'
 
 export class App extends React.Component {
   render() {

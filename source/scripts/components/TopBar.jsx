@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchFormContainer from '../containers/search-form-container'
+import SearchFormContainer from '../containers/SearchFormContainer'
 import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => ({

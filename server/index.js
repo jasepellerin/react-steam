@@ -1,5 +1,5 @@
 import React from 'react'
-import { App } from '../source/scripts/components/app.jsx'
+import { App } from '../source/scripts/components/App.jsx'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
