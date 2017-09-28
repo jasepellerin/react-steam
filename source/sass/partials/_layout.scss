@@ -20,8 +20,7 @@
 }
 
 .search {
-  @include xy-grid;
-  justify-content: center;
+  display: flex;
 }
 
 .game {
