@@ -6,14 +6,18 @@ const mapStateToProps = (state) => ({
   games: state.games
 })
 
-const Profile = ({ games }) => (
-  <div className="main">
-    {games ? games.map(game =>
-      <Game
-        key={game.id}
-        game={game} />
-    ) : ''}
-  </div>
-)
+class Profile extends React.Component {
+  render() {
+    return (
+      <div className="main">
+        {this.props.games ? this.props.games.map(game =>
+          <Game
+            key={game.id}
+            game={game} />
+        ) : ''}
+      </div>
+    )
+  }
+}
 
 export default connect(mapStateToProps)(Profile)
