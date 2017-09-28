@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
-const apiKey = require('./steam-api-key.json').key
+const apiKey = require('./secrets.json').steamKey
 
-const ownedGameURL = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/' +
-  'v1/?key=' + apiKey + '&input_json='
+const ownedGameURL = 'https://api.steampowered.com/IPlayerService/' +
+  'GetOwnedGames/v1/?key=' + apiKey + '&input_json='
 
 let ownedGameInputJson = {
   'steamid': undefined,
