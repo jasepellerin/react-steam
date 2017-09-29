@@ -23,6 +23,14 @@ class MongoController {
     })
   }
 
+  // Update given document in collection
+  updateDocument(collection, document) {
+    this.connectAndPerformFunction((db) => {
+      const query = { _id: document._id }
+      db.collection(collection).updateOne(query, document)
+    })
+  }
+
   /* Return promise which resolves to array containing
    * documents in given collection which match query
    */

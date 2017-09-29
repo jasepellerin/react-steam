@@ -11,6 +11,7 @@ import MongoController from './MongoController'
 
 const app = express()
 const mongo = new MongoController()
+const halfDayMillis = 43200000
 
 // Handle server rendering of react app
 function handleRender(req, res, title) {
@@ -35,6 +36,20 @@ function handleRender(req, res, title) {
   }))
 }
 
+// Get data from Steam
+function createUserFromSteamID(query) {
+  return SteamApi.getGames(query).then(result => {
+    // Construct new user
+    let user = {}
+    user._id = query
+    user.games = result.games
+    user.gameCount = result.game_count
+    user.lastModified = Date.now()
+    // Return the new user
+    return user
+  })
+}
+
 // Serve static files in dist
 app.use('/static', express.static('dist'))
 
@@ -54,21 +69,27 @@ app.get('/search/:query', (req, res) => {
     mongo.getMatchingDocumentsInCollection('users', { _id: query })
       .then(result => {
         if (result.length !== 0) {
-          // Return local version
-          res.json(result[0])
-        } else {
-          // Get data from Steam
-          SteamApi.getGames(req.params.query).then(result => {
-            // Construct new user
-            let user = {}
-            user._id = query
-            user.games = result.games
-            user.gameCount = result.game_count
-            user.lastModified = Date.now()
-            // Add the user to mongo
-            mongo.addDocument('users', user)
-            // Return the Steam data
+          const user = result[0]
+          // Check if stored user is more than 12 hours old
+          if (Date.now() - user.lastModified >= halfDayMillis) {
+            // Create new user with Steam data
+            createUserFromSteamID(query).then(newUser => {
+              // Update user in mongo
+              mongo.updateDocument('users', newUser)
+              // Return updated user as JSON
+              res.json(newUser)
+            })
+          } else {
+            // Return local version
             res.json(user)
+          }
+        } else {
+          // Create new user with Steam data
+          createUserFromSteamID(query).then(newUser => {
+            // Add the user to mongo
+            mongo.addDocument('users', newUser)
+            // Return new user as JSON
+            res.json(newUser)
           })
         }
       })
